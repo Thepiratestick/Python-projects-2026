@@ -1,32 +1,51 @@
 x = 1
 y = 1
 
-command = input("Rover moves: ").strip().lower()
-if command == ("up"):
-    y = y -1
-elif command == ("down"):
-    y = y +1
-elif command == ("right"):
-    x = x+1
-elif command == ("left"):
-    x = x-1
-elif command == ("up+left"):
-    x, y = x -1, y -1
-elif command == ("down+left"):
-    x, y = x -1, y +1
-elif command == ("up+right"):
-    x, y = x +1, y -1
-elif command == ("down+right"):
-    x, y = x +1, y +1
-else: print ("please write either up, down, left or right for the rover to move")
+while True:
+    command = input("Rover moves: ").strip().lower()
 
-grid = [
-[".", ".", "."],
-[".", ".", "."],
-[".", ".", "."]
-]
+    if command == "quit":
+        break
 
-grid[y][x] = "R"
+    elif command == "up":
+        y -= 1
 
-for row in grid:
-    print(row)
+    elif command == "down":
+        y += 1
+
+    elif command == "left":
+        x -= 1
+
+    elif command == "right":
+        x += 1
+
+    else:
+        print("Use up, down, left or right")
+        continue
+
+
+    if x < 0:
+        x = 0
+    if x > 2:
+        x = 2
+    if y < 0:
+        y = 0
+    if y > 2:
+        y = 2
+
+
+    print("Position:", x, y)
+
+
+    grid = [
+        [".",".","."],
+        [".",".","."],
+        [".",".","."]
+    ]
+
+    grid[y][x] = "R"
+
+    for row in grid:
+        print(row)
+
+    print()
